@@ -1,33 +1,86 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { Bookmark, Circle, Home, Search, User } from "lucide-react-native";
+import React from "react";
+import { View } from "react-native";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+function TabIcon({ focused, icon: Icon }: any) {
+  return (
+    <View className="items-center justify-center">
+      <Icon
+        color={focused ? "#ffffff" : "#a6a6a6"}
+        // fill={focused ? "white" : "#212529"}
+        // size={focused ? 26 : 22}
+        fill={(Icon === Circle) && "#a6a6a6"}
+      />
+    </View>
+  );
+}
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function _layout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "#000000",
+          height: 70,
+          position: "absolute",
+          overflow: "hidden",
+          paddingHorizontal: 10,
+        },
+        tabBarIconStyle: {
+            marginTop:5
+        },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          title: "Home",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={Home} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="user"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: "User",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={User} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: "Search",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={Search} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="saved"
+        options={{
+          title: "Bookmark",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={Bookmark} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={Circle} />
+          ),
         }}
       />
     </Tabs>
