@@ -15,6 +15,8 @@ export default function RootLayout() {
     DMSans_500Medium,
     DMSans_700Bold,
   });
+  if (!loaded) return null;
+
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -25,6 +27,7 @@ export default function RootLayout() {
       <Stack.Screen name="articlesPage/page" options={{ headerShown: false }} />
       <Stack.Screen name="profilePage/page" options={{ headerShown: false }} />
       <Stack.Screen name="commentsPage/page" options={{ headerShown: false }} />
+      <Stack.Screen name="newPost/page" options={{ headerShown: false }} />
     </Stack>
   );
 }

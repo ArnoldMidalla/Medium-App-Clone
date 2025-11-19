@@ -1,16 +1,28 @@
 import { Tabs } from "expo-router";
-import { Bookmark, Circle, Home, Search, User } from "lucide-react-native";
+import { Bookmark, Home, Search, User } from "lucide-react-native";
 import React from "react";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 
 function TabIcon({ focused, icon: Icon }: any) {
   return (
     <View className="items-center justify-center">
       <Icon
         color={focused ? "#ffffff" : "#a6a6a6"}
-        // fill={focused ? "white" : "#212529"}
+        fill={focused ? "white" : "#212529"}
         // size={focused ? 26 : 22}
-        fill={Icon === Circle && "#a6a6a6"}
+        // fill={Icon === Circle && "#a6a6a6"}
+        strokeWidth={1.6}
+      />
+    </View>
+  );
+}
+
+function TabIcon2({ focused, image }: any) {
+  return (
+    <View className="items-center justify-center">
+      <Image
+        source={{ uri: image }}
+        className={`size-8 rounded-full ${focused && "border-2 border-[#a6a6a6]"}`}
       />
     </View>
   );
@@ -81,7 +93,12 @@ export default function _layout() {
           title: "Profile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={Circle} />
+            <TabIcon2
+              focused={focused}
+              image={
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7N5xpGsqseTgSZjFhsIBfbuKnkoZuJFjfRA&s"
+              }
+            />
           ),
         }}
       />

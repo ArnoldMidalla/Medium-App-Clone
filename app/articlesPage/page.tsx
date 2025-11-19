@@ -81,10 +81,10 @@ export default function Page() {
           </Text>
         </View>
         <View className="mx-4 flex-col gap-4">
-          <View className="flex-row gap-2 border border-white px-4 py-2 rounded-full opacity-60">
+          {/* <View className="flex-row gap-2 border border-white px-4 py-2 rounded-full opacity-60">
             <Sparkle color={"white"} size={20} />
             <Text className="font-dmsans text-white">Member-only story</Text>
-          </View>
+          </View> */}
           <Text
             className="text-white text-3xl tracking-tighter leading-8 font-dmsansBold"
             // style={{ fontFamily: "DMSans_700Bold", fontSize: 30 }}

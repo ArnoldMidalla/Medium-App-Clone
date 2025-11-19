@@ -1,11 +1,10 @@
 import { Link } from "expo-router";
-import { Bell, SquarePen } from "lucide-react-native";
+import { Bell, Pen } from "lucide-react-native";
 import React from "react";
 import {
   Image,
   ScrollView,
   Text,
-  TouchableOpacity,
   View,
   useWindowDimensions,
 } from "react-native";
@@ -188,9 +187,11 @@ function Featured() {
           />
         ))}
       </ScrollView>
-      {/* <TouchableOpacity className="bg-green-600 size-16 absolute rounded-full flex justify-center items-center bottom-24 right-2">
-        <SquarePen color={"white"} size={25} strokeWidth={1.8} />
-      </TouchableOpacity> */}
+      {/* <Link href={"/newPost/page"}>
+        <TouchableOpacity className="bg-green-600 size-16 absolute rounded-full flex justify-center items-center bottom-24 right-2">
+          <SquarePen color={"white"} size={25} strokeWidth={1.8} />
+        </TouchableOpacity>
+      </Link> */}
     </View>
   );
 }
@@ -226,16 +227,19 @@ export default function index() {
   const layout = useWindowDimensions();
   const [index, setIndex] = React.useState(0);
   return (
-    <SafeAreaView className="bg-black flex-1">
+    <SafeAreaView className="bg-black flex-1 pb-20">
       <View className="px-6 py-10 flex-row justify-between items-center">
         <Image
           source={require("@/assets/images/Medium-Wordmark-White.png")}
           // className="h-6 w-full"
-          className="w-32 h-8 opacity-85"
+          className="w-32 h-8 opacity-90"
           resizeMode="contain"
         />
         <Link href={"/Others/notifications"} asChild>
-          <Bell color="#a6a6a6" />
+          <Bell color="#a6a6a6" strokeWidth={1.7} />
+        </Link>
+        <Link href={"/newPost/page"}>
+          <Pen color="#a6a6a6" strokeWidth={1.7} />
         </Link>
       </View>
       <TabView
