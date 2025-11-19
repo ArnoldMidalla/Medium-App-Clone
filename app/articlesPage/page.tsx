@@ -51,6 +51,11 @@ export default function Page() {
     // console.log(follow ? "user is following" : "user stopped");
   }
 
+  const [liked, setLiked] = useState(false);
+  function likePost() {
+    setLiked(!liked);
+  }
+
   return (
     <SafeAreaView className="bg-black flex-1 flex-col">
       <View className="pt-5 pb-3 flex-row items-center justify-between mx-4">
@@ -76,7 +81,7 @@ export default function Page() {
           </Text>
         </View>
         <View className="mx-4 flex-col gap-4">
-          <View className="flex-row gap-2 border border-white px-4 py-2 max-w-fit rounded-full opacity-60">
+          <View className="flex-row gap-2 border border-white px-4 py-2 rounded-full opacity-60">
             <Sparkle color={"white"} size={20} />
             <Text className="font-dmsans text-white">Member-only story</Text>
           </View>
@@ -121,24 +126,29 @@ export default function Page() {
           <Text className="text-white font-dmsans text-center opacity-60 text-sm">
             Image by Matthew Guay
           </Text>
-          <Text className="font-dmsans tracking-wide text-white opacity-80">
+          <Text className="font-dmsans tracking-wide text-white opacity-80" selectable>
             {fakeData.content}
           </Text>
         </View>
       </ScrollView>
       <View className="flex-row items-center mx-4 justify-between mb-7 mt-5">
-        <View className="flex-row gap-2 items-center">
-          <Heart color={"#7e7e7e"} size={22} />
+        <TouchableOpacity
+          onPress={likePost}
+          className="flex-row gap-2 items-center"
+        >
+          <Heart color={"#7e7e7e"} size={22} fill={liked?"#7e7e7e":""} />
           <Text className="text-white font-dmsansMedium opacity-80">
             {formatToK(fakeData.views)}
           </Text>
-        </View>
-        <View className="flex-row gap-2 items-center">
-          <MessageCircle color={"#7e7e7e"} size={22} />
-          <Text className="text-white font-dmsansMedium opacity-80">
-            {formatToK(fakeData.comments)}
-          </Text>
-        </View>
+        </TouchableOpacity>
+        <Link href={"/commentsPage/page"} asChild>
+          <TouchableOpacity className="flex-row gap-2 items-center">
+            <MessageCircle color={"#7e7e7e"} size={22} />
+            <Text className="text-white font-dmsansMedium opacity-80">
+              {formatToK(fakeData.comments)}
+            </Text>
+          </TouchableOpacity>
+        </Link>
         <Bookmark color={"#7e7e7e"} size={22} />
         <Share2 color={"#7e7e7e"} size={22} />
       </View>

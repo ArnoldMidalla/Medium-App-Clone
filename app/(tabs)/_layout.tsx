@@ -10,7 +10,7 @@ function TabIcon({ focused, icon: Icon }: any) {
         color={focused ? "#ffffff" : "#a6a6a6"}
         // fill={focused ? "white" : "#212529"}
         // size={focused ? 26 : 22}
-        fill={(Icon === Circle) && "#a6a6a6"}
+        fill={Icon === Circle && "#a6a6a6"}
       />
     </View>
   );
@@ -23,13 +23,15 @@ export default function _layout() {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: "#000000",
-          height: 70,
+          height: 90,
           position: "absolute",
           overflow: "hidden",
           paddingHorizontal: 10,
+          borderTopWidth: 0,
         },
+        // mx-4 justify-between mb-7 mt-5
         tabBarIconStyle: {
-            marginTop:5
+          marginTop: 12,
         },
       }}
     >
