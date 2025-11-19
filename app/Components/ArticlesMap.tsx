@@ -1,14 +1,16 @@
 import { Link } from "expo-router";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
-interface ArticleMapProps {
+interface ArticleProps {
   title: string;
   subtitle: string;
   author: string;
   date: string;
   views: number;
   comments: number;
+  image: string;
+  authorImg: string;
 }
 
 export default function ArticlesMap({
@@ -18,16 +20,32 @@ export default function ArticlesMap({
   date,
   views,
   comments,
-}: ArticleMapProps) {
+  image,
+  authorImg,
+}: ArticleProps) {
   return (
-    <Link href={"/(tabs)"} asChild>
-    <TouchableOpacity className="w-full p-4 mb-3 rounded-lg">
-      <Text className="text-white text-lg font-bold">{title}</Text>
-      <Text className="text-gray-400 text-sm mt-1">{subtitle}</Text>
-      <Text className="text-gray-500 text-xs mt-2">
-        {author} • {date} • {views.toLocaleString()} views • {comments} comments
-      </Text>
-    </TouchableOpacity>
-    </Link>
+    <View className="pt-8">
+      <Link href={"/articlesPage/page"} asChild>
+        <TouchableOpacity className="w-full px-4 mb-8 rounded-lg flex-row flex-1 justify-between items-center">
+          <View className="max-w-60 flex flex-col gap-4">
+            <View className="flex-row gap-3 items-center">
+              <Image
+                source={{ uri: authorImg }}
+                className="rounded-full size-8"
+              />
+              <Text className="text-white font-medium text-sm">{author}</Text>
+            </View>
+            <Text className="text-lg font-bold text-white leading-6">
+              {title}
+            </Text>
+          </View>
+          <Image
+            source={{ uri: image }}
+            className="h-16 w-24 object-cover rounded"
+          />
+        </TouchableOpacity>
+      </Link>
+      <View className="bg-gray-600 h-[1px] w-full mr-6 rounded-full"></View>
+    </View>
   );
 }
