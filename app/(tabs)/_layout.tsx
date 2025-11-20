@@ -41,7 +41,6 @@ export default function _layout() {
           paddingHorizontal: 10,
           borderTopWidth: 0,
         },
-        // mx-4 justify-between mb-7 mt-5
         tabBarIconStyle: {
           marginTop: 12,
         },

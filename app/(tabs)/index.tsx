@@ -238,9 +238,9 @@ export default function index() {
         <Link href={"/Others/notifications"} asChild>
           <Bell color="#a6a6a6" strokeWidth={1.7} />
         </Link>
-        <Link href={"/newPost/page"}>
+        {/* <Link href={"/newPost/page"}>
           <Pen color="#a6a6a6" strokeWidth={1.7} />
-        </Link>
+        </Link> */}
       </View>
       <TabView
         navigationState={{ index, routes }}
